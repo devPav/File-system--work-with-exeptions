@@ -56,3 +56,9 @@ fn provide_exeptions3() -> Result<String, io::Error> {
 fn provide_exeptions4() -> Result<String, io::Error> {
     fs::read_to_string("user_name.txt")
 }
+
+fn provide_exeptions5() -> Result<String, Box<dyn std::error::Error>> {
+    let mut s = String::new();
+    File::open("user_name.txt")?.read_to_string(&mut s)?;
+    Ok(s)   
+}
